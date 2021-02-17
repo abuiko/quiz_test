@@ -42,8 +42,8 @@ const quizData = [{
     }
 ]
 
-console.log(quizData.length);
 
+const answerEls = document.querySelectorAll('.answer');
 const questionEl = document.getElementById('quiz-question');
 const a_text = document.getElementById('a-text');
 const b_text = document.getElementById('b-text');
@@ -58,6 +58,9 @@ let currentQuiz = 0;
 loadQuiz();
 
 function loadQuiz() {
+
+    getDiselected()
+
     const currentQuizData = quizData[currentQuiz];
     questionEl.innerText = currentQuizData.question;
     a_text.innerText = currentQuizData.a;
@@ -68,7 +71,7 @@ function loadQuiz() {
 }
 
 function getSelected() {
-    const answerEls = document.querySelectorAll('.answer');
+
     let answer = undefined;
 
 
@@ -80,7 +83,13 @@ function getSelected() {
     return answer;
 }
 
-
+function getDiselected() {
+    answerEls.forEach(answerEl => {
+        if (answerEl.checked) {
+            answerEl.checked = false;
+        }
+    })
+}
 
 submitBtn.addEventListener('click', () => {
 
@@ -98,9 +107,5 @@ submitBtn.addEventListener('click', () => {
             alert('You finished the quiz')
         }
     }
-
-
-
-
 
 })
