@@ -3,46 +3,52 @@ const quizData = [{
         a: 'a1',
         b: 'b1',
         c: 'c1',
-        d: 'd1'
+        d: 'd1',
+        correct: 'a'
     },
     {
         question: 'How many oceans are there on our planet?',
         a: 'a2',
         b: 'b2',
         c: 'c2',
-        d: 'd2'
+        d: 'd2',
+        correct: 'd'
     },
     {
         question: 'Who invented electricity?',
         a: 'a3',
         b: 'b3',
         c: 'c3',
-        d: 'd3'
+        d: 'd3',
+        correct: 'c'
     },
     {
         question: 'When did WW2 started?',
         a: 'a4',
         b: 'b4',
         c: 'c4',
-        d: 'd4'
+        d: 'd4',
+        correct: 'a'
     },
     {
         question: 'What is the capital of US?',
         a: 'a5',
         b: 'b5',
         c: 'c5',
-        d: 'd5'
+        d: 'd5',
+        correct: 'c'
     },
     {
         question: 'What is the capital of Belarus?',
         a: 'a6',
         b: 'b6',
         c: 'c6',
-        d: 'd6'
+        d: 'd6',
+        correct: 'd'
     }
 ]
 
-
+const quiz = document.getElementById('quiz');
 const answerEls = document.querySelectorAll('.answer');
 const questionEl = document.getElementById('quiz-question');
 const a_text = document.getElementById('a-text');
@@ -67,7 +73,7 @@ function loadQuiz() {
     b_text.innerText = currentQuizData.b;
     c_text.innerText = currentQuizData.c;
     d_text.innerText = currentQuizData.d;
-    currentQuiz++;
+
 }
 
 function getSelected() {
@@ -104,7 +110,7 @@ submitBtn.addEventListener('click', () => {
         if (currentQuiz < quizData.length) {
             loadQuiz();
         } else {
-            alert('You finished the quiz')
+            alert(`You answered ${score} / ${quizData.length} questions`);
         }
     }
 
