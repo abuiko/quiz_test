@@ -42,14 +42,14 @@ const quizData = [{
     }
 ]
 
+console.log(quizData.length);
 
-
-const questionEl = document.querySelector('.quiz-question');
+const questionEl = document.getElementById('quiz-question');
 const a_text = document.getElementById('a-text');
 const b_text = document.getElementById('b-text');
 const c_text = document.getElementById('c-text');
 const d_text = document.getElementById('d-text');
-const submitBtn = document.querySelector('.quiz-button');
+const submitBtn = document.getElementById('quiz-button');
 
 let currentQuiz = 0;
 
@@ -66,7 +66,7 @@ function loadQuiz() {
 }
 
 submitBtn.addEventListener('click', () => {
-    currentQuiz++;
+
     if (currentQuiz < quizData.length) {
         loadQuiz();
     } else {
