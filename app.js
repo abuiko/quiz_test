@@ -49,6 +49,7 @@ const a_text = document.getElementById('a-text');
 const b_text = document.getElementById('b-text');
 const c_text = document.getElementById('c-text');
 const d_text = document.getElementById('d-text');
+const submitBtn = document.querySelector('.quiz-button');
 
 let currentQuiz = 0;
 
@@ -63,3 +64,13 @@ function loadQuiz() {
     d_text.innerText = currentQuizData.d;
     currentQuiz++;
 }
+
+submitBtn.addEventListener('click', () => {
+    currentQuiz++;
+    if (currentQuiz < quizData.length) {
+        loadQuiz();
+    } else {
+        alert('You finished the quiz')
+    }
+
+})
