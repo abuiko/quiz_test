@@ -50,6 +50,8 @@ const b_text = document.getElementById('b-text');
 const c_text = document.getElementById('c-text');
 const d_text = document.getElementById('d-text');
 const submitBtn = document.getElementById('quiz-button');
+// let answer = undefined;
+let score = 0;
 
 let currentQuiz = 0;
 
@@ -65,12 +67,40 @@ function loadQuiz() {
     currentQuiz++;
 }
 
+function getSelected() {
+    const answerEls = document.querySelectorAll('.answer');
+    let answer = undefined;
+
+
+    answerEls.forEach(answerEl => {
+        if (answerEl.checked) {
+            answer = answerEl.id;
+        }
+    })
+    return answer;
+}
+
+
+
 submitBtn.addEventListener('click', () => {
 
-    if (currentQuiz < quizData.length) {
-        loadQuiz();
-    } else {
-        alert('You finished the quiz')
+
+    const answer = getSelected();
+
+    if (answer) {
+        if (answer === quizData[currentQuiz].correct) {
+            score++;
+        }
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+            loadQuiz();
+        } else {
+            alert('You finished the quiz')
+        }
     }
+
+
+
+
 
 })
